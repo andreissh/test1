@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
+import { useSidebarStore } from '@/stores/sidebar'
+import { toRefs, type Component } from 'vue'
 
 type liContentType = {
   text: string
@@ -7,6 +8,9 @@ type liContentType = {
 }
 
 defineProps<{ liContent: liContentType }>()
+
+const sidebarStore = useSidebarStore()
+const { isCollapsed } = toRefs(sidebarStore)
 </script>
 
 <template>
@@ -14,9 +18,14 @@ defineProps<{ liContent: liContentType }>()
     <div :style="{ color: liContent.text === 'Учебные сессии' ? '#fff' : '#999' }">
       <component :is="liContent.icon" />
     </div>
-    <span class="text" :class="liContent.text === 'Учебные сессии' ? 'active' : ''">{{
-      liContent.text
-    }}</span>
+    <transition name="fade">
+      <span
+        class="text"
+        :class="liContent.text === 'Учебные сессии' ? 'active' : ''"
+        v-if="!isCollapsed"
+        >{{ liContent.text }}</span
+      >
+    </transition>
   </li>
 </template>
 
@@ -45,5 +54,10 @@ defineProps<{ liContent: liContentType }>()
 
 .text.active {
   color: #fff;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
 }
 </style>

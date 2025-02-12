@@ -1,30 +1,49 @@
 <script setup lang="ts">
+import { toRefs } from 'vue'
 import NavComponent from './NavComponent.vue'
+import { useSidebarStore } from '@/stores/sidebar'
+
+const sidebarStore = useSidebarStore()
+const { isCollapsed } = toRefs(sidebarStore)
+const toggleSidebar = sidebarStore.toggleSidebar
 </script>
 
 <template>
-  <aside class="sidebar">
+  <aside class="sidebar" :class="{ collapsed: isCollapsed }">
     <div class="logoWrapper">
       <img src="@/assets/logo.svg" alt="logo" />
-      <h2 class="title">Сим Центр</h2>
+      <transition name="fade">
+        <h2 class="title" v-if="!isCollapsed">Сим Центр</h2>
+      </transition>
     </div>
+    <button class="toggleBtn" :class="{ collapsed: isCollapsed }" @click="toggleSidebar">
+      {{ isCollapsed ? '>' : '<' }}
+    </button>
     <NavComponent />
     <div class="lowerWrapper">
       <div class="user">
-        <div class="usernameWrapper">
-          <span class="username">Барнаби Мармадюк</span>
-          <span class="position">Преподаватель</span>
-        </div>
+        <transition name="fade">
+          <div class="usernameWrapper" v-if="!isCollapsed">
+            <span class="username">Барнаби Мармадюк</span>
+            <span class="position">Преподаватель</span>
+          </div>
+        </transition>
         <img src="@/assets/userlogo.svg" alt="userlogo" />
       </div>
       <div class="logout">
         <img src="@/assets/logout.svg" alt="logout" />
-        <span class="logoutText">Выйти</span>
+        <transition name="fade">
+          <span class="logoutText" v-if="!isCollapsed">Выйти</span>
+        </transition>
       </div>
       <div class="lang">
         <img src="@/assets/flag.svg" alt="lang" />
-        <span class="langText">Русский</span>
-        <span class="langArrow">></span>
+        <transition name="fade">
+          <span class="langText" v-if="!isCollapsed">Русский</span>
+        </transition>
+        <transition name="fade">
+          <span class="langArrow" v-if="!isCollapsed">></span>
+        </transition>
       </div>
       <span class="version">Версия 1.02</span>
     </div>
@@ -34,13 +53,39 @@ import NavComponent from './NavComponent.vue'
 <style scoped>
 .sidebar {
   min-width: 274px;
-  transition: transform 0.3s ease-in-out;
+  width: 274px;
   padding: 12px 19px;
   min-height: 100vh;
   max-height: 100vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  transition:
+    width 0.5s ease-in-out,
+    min-width 0.5s ease-in-out;
+}
+
+.sidebar.collapsed {
+  min-width: 108px;
+  width: 108px;
+  align-items: center;
+}
+
+.toggleBtn {
+  position: absolute;
+  top: 30px;
+  left: 262px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  transition: left 0.5s ease-in-out;
+}
+
+.toggleBtn.collapsed {
+  left: 96px;
 }
 
 .logoWrapper {
@@ -118,5 +163,10 @@ import NavComponent from './NavComponent.vue'
   font-size: 13px;
   line-height: 20px;
   opacity: 0.65;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
 }
 </style>
