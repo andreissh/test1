@@ -52,7 +52,7 @@ const visiblePages = computed(() => {
 
 <template>
   <v-container class="tableContainer">
-    <v-table class="custom-table">
+    <v-table class="table">
       <thead>
         <tr class="striped">
           <th v-for="header in tableHeaders" :key="header.text">{{ header.text }}</th>
@@ -103,48 +103,50 @@ const visiblePages = computed(() => {
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-}
-
-.custom-table {
-  width: 100%;
   border: 1px solid #e8eaec;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
 }
 
-.custom-table thead {
+.table {
+  width: 100%;
+}
+
+.table thead {
   background-color: #f5f5f5;
   font-weight: bold;
   display: flex;
   max-height: 52px;
+  border-radius: 12px;
 }
 
-.custom-table thead tr {
+.table thead tr {
   display: grid;
   width: 100%;
   grid-template-columns: 2fr 2fr 4fr 2fr 2fr 2fr;
   grid-template-rows: 28px;
   align-items: center;
+  border-radius: 12px;
 }
 
-.custom-table thead tr th {
+.table thead tr th {
   text-align: left;
 }
 
-.custom-table tbody {
+.table tbody {
   display: block;
   max-height: calc(100vh - 238px);
   overflow-y: auto;
 }
 
-.custom-table tbody tr {
+.table tbody tr {
   display: grid;
   grid-template-columns: 2fr 2fr 4fr 2fr 2fr 2fr;
 }
 
-.custom-table th,
-.custom-table td,
-.custom-table thead tr,
-.custom-table thead td {
+.table th,
+.table td,
+.table thead tr,
+.table thead td {
   padding: 12px;
   border: none;
   text-align: left;
@@ -160,6 +162,7 @@ const visiblePages = computed(() => {
 .pagination {
   display: flex;
   padding: 12px 16px;
+  border-top: 1px solid #e8eaec;
   border-radius: 0 0 12px 12px;
 }
 
@@ -190,13 +193,13 @@ const visiblePages = computed(() => {
 }
 
 .pagination button:hover {
-  color: #3761f3;
-  border: 1px solid #3761f3;
-  background-color: #fff;
+  background-color: #e0e0e0;
 }
 
 .pagination button.active {
-  background-color: #e0e0e0;
+  color: #3761f3;
+  border: 1px solid #3761f3;
+  background-color: #fff;
 }
 
 .pagination button:disabled {
