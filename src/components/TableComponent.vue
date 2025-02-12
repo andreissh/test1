@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { tableData } from '@/assets/tableData'
 import { tableHeaders } from '@/assets/tableData'
+import StatusComponent from './StatusComponent.vue'
 
 const data = ref(tableData)
 
@@ -65,7 +66,7 @@ const visiblePages = computed(() => {
           :class="{ striped: index % 2 === 1 }"
         >
           <td>{{ row.datetime }}</td>
-          <td>{{ row.status }}</td>
+          <td><StatusComponent :status="row.status" /></td>
           <td>{{ row.module }}</td>
           <td>{{ row.sessionType }}</td>
           <td>{{ row.room }}</td>
