@@ -10,9 +10,13 @@ defineProps<{ liContent: liContentType }>()
 </script>
 
 <template>
-  <li class="navItem">
-    <component :is="liContent.icon" />
-    <span class="text">{{ liContent.text }}</span>
+  <li class="navItem" :class="liContent.text === 'Учебные сессии' ? 'active' : ''">
+    <div :style="{ color: liContent.text === 'Учебные сессии' ? '#fff' : '#999' }">
+      <component :is="liContent.icon" />
+    </div>
+    <span class="text" :class="liContent.text === 'Учебные сессии' ? 'active' : ''">{{
+      liContent.text
+    }}</span>
   </li>
 </template>
 
@@ -31,7 +35,15 @@ defineProps<{ liContent: liContentType }>()
   cursor: pointer;
 }
 
+.navItem.active {
+  background-color: #3761f3;
+}
+
 .text {
   margin-left: 12px;
+}
+
+.text.active {
+  color: #fff;
 }
 </style>
