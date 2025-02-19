@@ -2,7 +2,7 @@
 
 <template>
   <div class="search">
-    <img src="@/assets/searchIcon.svg" alt="Search" />
+    <img src="@/assets/icons/searchIcon.svg" alt="Search" />
     <input type="text" placeholder="Поиск" />
   </div>
 </template>
@@ -13,19 +13,19 @@
   display: flex;
   align-items: center;
   width: 260px;
-  padding: 12px 18px;
+  padding: 0.75rem 1.125rem;
   border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  border-radius: 0.75rem;
 }
 
 .search input {
   flex: 1;
-  padding-left: 32px;
+  padding-left: 2rem;
 }
 
 .search input::placeholder {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   color: #2f3144;
 }
 

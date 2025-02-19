@@ -8,16 +8,16 @@ defineProps({
 </script>
 
 <template>
-  <button class="filterBtn">
+  <button class="filter-btn">
     <component :is="icon" />
   </button>
 </template>
 
 <style scoped>
-.filterBtn {
-  padding: 10px;
+.filter-btn {
+  padding: 0.625rem;
   background-color: #f4f4f4;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   display: flex;
   align-items: center;
 }

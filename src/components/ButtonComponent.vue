@@ -13,10 +13,10 @@ defineProps({
 
 <style scoped>
 .btn {
-  padding: 10px 24px;
+  padding: 0.625rem 1.5rem;
   font-weight: 700;
   color: #fff;
   background-color: #3761f3;
-  border-radius: 12px;
+  border-radius: 0.75rem;
 }
 </style>

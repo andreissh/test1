@@ -5,8 +5,8 @@ import TableComponent from './TableComponent.vue'
 
 <template>
   <div class="card">
-    <div class="innerWrapper">
-      <div class="cardHeader">
+    <div class="inner-wrapper">
+      <div class="card-header">
         <h2 class="title">Учебные сессии</h2>
         <FilterComponent />
       </div>
@@ -18,20 +18,20 @@ import TableComponent from './TableComponent.vue'
 <style scoped>
 .card {
   min-height: calc(100vh - 8px);
-  margin: 8px 8px 0 8px;
-  border-radius: 8px 8px 0 0;
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
   background-color: #fff;
 }
 
-.innerWrapper {
-  padding: 16px 24px 32px 24px;
+.inner-wrapper {
+  padding: 1rem 1.5rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   min-height: calc(100vh - 8px);
 }
 
-.cardHeader {
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;

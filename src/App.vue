@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainComponent from './components/MainComponent.vue'
 import SidebarComponent from './components/SidebarComponent.vue'
-import '@/assets/reset.css'
+import '@/assets/styles/reset.css'
 </script>
 
 <template>

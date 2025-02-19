@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { tableData } from '@/assets/tableData'
-import { tableHeaders } from '@/assets/tableData'
+import { tableData } from '@/data/tableData'
+import { tableHeaders } from '@/data/tableData'
 import StatusComponent from './StatusComponent.vue'
 
 const data = ref(tableData)
@@ -52,8 +52,8 @@ const visiblePages = computed(() => {
 </script>
 
 <template>
-  <v-container class="tableContainer">
-    <v-table class="table">
+  <div class="table-container">
+    <table class="table">
       <thead>
         <tr class="striped">
           <th v-for="header in tableHeaders" :key="header.text">{{ header.text }}</th>
@@ -73,7 +73,7 @@ const visiblePages = computed(() => {
           <td>{{ row.group }}</td>
         </tr>
       </tbody>
-    </v-table>
+    </table>
 
     <div class="pagination striped">
       <button @click="prevPage" :disabled="currentPage === 1">{{ '<' }}</button>
@@ -95,17 +95,18 @@ const visiblePages = computed(() => {
       </button>
       <button @click="nextPage" :disabled="currentPage === totalPages">{{ '>' }}</button>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <style scoped>
-.tableContainer {
+.table-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
   border: 1px solid #e8eaec;
-  border-radius: 12px;
+  border-radius: 0.75rem;
+  padding: 0;
 }
 
 .table {
@@ -117,16 +118,16 @@ const visiblePages = computed(() => {
   font-weight: bold;
   display: flex;
   max-height: 52px;
-  border-radius: 12px;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .table thead tr {
   display: grid;
   width: 100%;
   grid-template-columns: 2fr 2fr 4fr 2fr 2fr 2fr;
-  grid-template-rows: 28px;
+  grid-template-rows: 1.75rem;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 0.75rem;
 }
 
 .table thead tr th {
@@ -148,7 +149,7 @@ const visiblePages = computed(() => {
 .table td,
 .table thead tr,
 .table thead td {
-  padding: 12px;
+  padding: 0.75rem;
   border: none;
   text-align: left;
   word-wrap: break-word;
@@ -162,35 +163,35 @@ const visiblePages = computed(() => {
 
 .pagination {
   display: flex;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   border-top: 1px solid #e8eaec;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 0.75rem 0.75rem;
 }
 
 .pagination button {
   border: 1px solid transparent;
-  padding: 6px 12px;
-  margin: 0 4px;
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.25rem;
   cursor: pointer;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
-.pageLeft button {
+.page-left button {
   border: 1px solid transparent;
-  padding: 6px 12px;
-  margin: 0 4px;
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.25rem;
   cursor: pointer;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 .pagination span {
-  padding: 6px 12px;
-  margin: 0 4px;
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.25rem;
   cursor: context-menu;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 .pagination button:hover {

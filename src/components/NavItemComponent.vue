@@ -14,7 +14,7 @@ const { isCollapsed } = toRefs(sidebarStore)
 </script>
 
 <template>
-  <li class="navItem" :class="liContent.text === 'Учебные сессии' ? 'active' : ''">
+  <li class="nav-item" :class="liContent.text === 'Учебные сессии' ? 'active' : ''">
     <div :style="{ color: liContent.text === 'Учебные сессии' ? '#fff' : '#999' }">
       <component :is="liContent.icon" />
     </div>
@@ -30,26 +30,26 @@ const { isCollapsed } = toRefs(sidebarStore)
 </template>
 
 <style scoped>
-.navItem {
-  padding: 12px;
-  margin-bottom: 4px;
+.nav-item {
+  padding: 0.75rem;
+  margin-bottom: 0.25rem;
   font-weight: 700;
   display: flex;
   align-items: center;
-  border-radius: 16px;
+  border-radius: 1rem;
 }
 
-.navItem:hover {
+.nav-item:hover {
   background-color: #f4f4f4;
   cursor: pointer;
 }
 
-.navItem.active {
+.nav-item.active {
   background-color: #3761f3;
 }
 
 .text {
-  margin-left: 12px;
+  margin-left: 0.75rem;
 }
 
 .text.active {

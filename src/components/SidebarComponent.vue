@@ -10,39 +10,39 @@ const toggleSidebar = sidebarStore.toggleSidebar
 
 <template>
   <aside class="sidebar" :class="{ collapsed: isCollapsed }">
-    <div class="logoWrapper">
-      <img src="@/assets/logo.svg" alt="logo" />
+    <div class="logo-wrapper">
+      <img src="@/assets/icons/logo.svg" alt="logo" />
       <transition name="fade">
         <h2 class="title" v-if="!isCollapsed">Сим Центр</h2>
       </transition>
     </div>
-    <button class="toggleBtn" :class="{ collapsed: isCollapsed }" @click="toggleSidebar">
+    <button class="toggle-btn" :class="{ collapsed: isCollapsed }" @click="toggleSidebar">
       {{ isCollapsed ? '>' : '<' }}
     </button>
     <NavComponent />
-    <div class="lowerWrapper">
+    <div class="lower-wrapper">
       <div class="user">
         <transition name="fade">
-          <div class="usernameWrapper" v-if="!isCollapsed">
+          <div class="username-wrapper" v-if="!isCollapsed">
             <span class="username">Барнаби Мармадюк</span>
             <span class="position">Преподаватель</span>
           </div>
         </transition>
-        <img src="@/assets/userlogo.svg" alt="userlogo" />
+        <img src="@/assets/icons/userlogo.svg" alt="userlogo" />
       </div>
       <div class="logout">
-        <img src="@/assets/logout.svg" alt="logout" />
+        <img src="@/assets/icons/logout.svg" alt="logout" />
         <transition name="fade">
-          <span class="logoutText" v-if="!isCollapsed">Выйти</span>
+          <span class="logout-text" v-if="!isCollapsed">Выйти</span>
         </transition>
       </div>
       <div class="lang">
-        <img src="@/assets/flag.svg" alt="lang" />
+        <img src="@/assets/icons/flag.svg" alt="lang" />
         <transition name="fade">
-          <span class="langText" v-if="!isCollapsed">Русский</span>
+          <span class="lang-text" v-if="!isCollapsed">Русский</span>
         </transition>
         <transition name="fade">
-          <span class="langArrow" v-if="!isCollapsed">></span>
+          <span class="lang-arrow" v-if="!isCollapsed">></span>
         </transition>
       </div>
       <span class="version">Версия 1.02</span>
@@ -54,7 +54,7 @@ const toggleSidebar = sidebarStore.toggleSidebar
 .sidebar {
   min-width: 274px;
   width: 274px;
-  padding: 12px 19px;
+  padding: 0.75rem 1.25rem;
   min-height: 100vh;
   max-height: 100vh;
   overflow-y: auto;
@@ -71,7 +71,7 @@ const toggleSidebar = sidebarStore.toggleSidebar
   align-items: center;
 }
 
-.toggleBtn {
+.toggle-btn {
   position: absolute;
   top: 30px;
   left: 262px;
@@ -84,73 +84,73 @@ const toggleSidebar = sidebarStore.toggleSidebar
   transition: left 0.5s ease-in-out;
 }
 
-.toggleBtn.collapsed {
+.toggle-btn.collapsed {
   left: 96px;
 }
 
-.logoWrapper {
+.logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 43px;
+  margin-bottom: 2.75rem;
 }
 
 .title {
-  margin-left: 14px;
+  margin-left: 0.875rem;
 }
 
-.lowerWrapper {
+.lower-wrapper {
   margin-top: auto;
 }
 
 .user {
-  padding: 12px;
-  margin-bottom: 18px;
+  padding: 0.75rem;
+  margin-bottom: 1.125rem;
   display: flex;
-  gap: 12px;
-  border-radius: 16px;
+  gap: 0.75rem;
+  border-radius: 1rem;
   box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
 }
 
 .logout {
-  padding: 12px;
-  margin-bottom: 4px;
+  padding: 0.75rem;
+  margin-bottom: 0.25rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
 }
 
-.logoutText {
-  margin-left: 12px;
+.logout-text {
+  margin-left: 0.75rem;
 }
 
 .lang {
-  padding: 12px;
-  margin-bottom: 18px;
+  padding: 0.75rem;
+  margin-bottom: 1.125rem;
   font-weight: 700;
   border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   display: flex;
   cursor: pointer;
 }
 
-.langText {
-  margin-left: 12px;
+.lang-text {
+  margin-left: 0.75rem;
 }
 
-.langArrow {
+.lang-arrow {
   transform: rotate(90deg);
   color: #999;
   margin-left: auto;
 }
 
 .version {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   opacity: 0.65;
 }
 
-.usernameWrapper {
+.username-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -160,8 +160,8 @@ const toggleSidebar = sidebarStore.toggleSidebar
 }
 
 .position {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   opacity: 0.65;
 }
 

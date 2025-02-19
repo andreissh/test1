@@ -18,6 +18,6 @@ import InputComponent from './InputComponent.vue'
 <style scoped>
 .filters {
   display: flex;
-  gap: 14px;
+  gap: 0.875rem;
 }
 </style>

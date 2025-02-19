@@ -1,39 +1,25 @@
 <script setup lang="ts">
 enum Status {
-  PLANNED = 'Запланировано',
-  INPROCESS = 'Идет',
-  COMPLETED = 'Завершено',
+  'Запланировано' = 'planned',
+  'Идет' = 'inprocess',
+  'Завершено' = 'completed',
 }
 
-defineProps({
-  status: {
-    type: String,
-    required: true,
-  },
-})
+const props = defineProps<{
+  status: string
+}>()
 </script>
 
 <template>
-  <div
-    class="statusChip"
-    :class="
-      status === Status.PLANNED
-        ? 'planned'
-        : status === Status.INPROCESS
-          ? 'inprocess'
-          : status === Status.COMPLETED
-            ? 'completed'
-            : ''
-    "
-  >
+  <div class="status-chip" :class="Status[props.status as keyof typeof Status]">
     {{ status }}
   </div>
 </template>
 
 <style scoped>
-.statusChip {
-  padding: 4px 12px;
-  border-radius: 12px;
+.status-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
   max-width: fit-content;
 }
 
