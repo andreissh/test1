@@ -1,10 +1,9 @@
 <script setup lang="ts">
-defineProps({
-  icon: {
-    type: Object,
-    required: true,
-  },
-})
+import type { Component } from 'vue'
+
+defineProps<{
+  icon: Component
+}>()
 </script>
 
 <template>

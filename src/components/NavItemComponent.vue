@@ -2,28 +2,28 @@
 import { useSidebarStore } from '@/stores/sidebar'
 import { toRefs, type Component } from 'vue'
 
-type liContentType = {
+type navItemType = {
   text: string
   icon: Component
 }
 
-defineProps<{ liContent: liContentType }>()
+defineProps<{ navItem: navItemType }>()
 
 const sidebarStore = useSidebarStore()
 const { isCollapsed } = toRefs(sidebarStore)
 </script>
 
 <template>
-  <li class="nav-item" :class="liContent.text === 'Учебные сессии' ? 'active' : ''">
-    <div :style="{ color: liContent.text === 'Учебные сессии' ? '#fff' : '#999' }">
-      <component :is="liContent.icon" />
+  <li class="nav-item" :class="navItem.text === 'Учебные сессии' ? 'active' : ''">
+    <div :style="{ color: navItem.text === 'Учебные сессии' ? '#fff' : '#999' }">
+      <component :is="navItem.icon" />
     </div>
     <transition name="fade">
       <span
         class="text"
-        :class="liContent.text === 'Учебные сессии' ? 'active' : ''"
+        :class="navItem.text === 'Учебные сессии' ? 'active' : ''"
         v-if="!isCollapsed"
-        >{{ liContent.text }}</span
+        >{{ navItem.text }}</span
       >
     </transition>
   </li>

@@ -82,6 +82,7 @@ const toggleSidebar = sidebarStore.toggleSidebar
   color: #fff;
   cursor: pointer;
   transition: left 0.5s ease-in-out;
+  z-index: 2;
 }
 
 .toggle-btn.collapsed {
